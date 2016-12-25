@@ -1,4 +1,5 @@
 var jobs = require('./lib/jobs');
+var chrome = require('./lib/chrome');
 
 // run the chromix-too server
 // chromix-too-server
@@ -9,7 +10,8 @@ jobs.createJob('*/20 * * * *', function() {});
 
 // change pictures every hour
 jobs.createJob('0 */1 * * *', function() {
-	// refresh chrome
+	chrome.openTab("http://google.com");
+	chrome.closeAllUnfocusedTabs();
 });
 
 // pull any changes 10 minutes before every hour
